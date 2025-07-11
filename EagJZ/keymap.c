@@ -10,7 +10,6 @@ enum custom_keycodes {
   HSV_99_94_255,
   HSV_139_222_246,
   HSV_0_0_246,
-  REPEAT = SAFE_RANGE
 };
 
 
@@ -22,7 +21,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,         KC_B,           KC_L,           KC_D,           KC_W,           KC_Z,                                           KC_QUOTE,       KC_F,           KC_O,           KC_U,           KC_J,           KC_TRANSPARENT, 
     KC_BSPC,        MT(MOD_LALT, KC_N),LT(1, KC_R),    MT(MOD_LSFT, KC_T),KC_S,           KC_G,                                           KC_Y,           KC_H,           MT(MOD_RSFT, KC_A),LT(1, KC_E),    MT(MOD_LALT, KC_I),KC_TRANSPARENT, 
     KC_TRANSPARENT, MT(MOD_LGUI, KC_Q),MT(MOD_RALT, KC_X),KC_M,           MT(MOD_LCTL, KC_C),KC_V,                                           KC_K,           MT(MOD_RCTL, KC_P),KC_COMMA,       MT(MOD_RALT, KC_DOT),MT(MOD_RGUI, KC_SCLN),KC_ENTER,       
-                                                    MO(2),          KC_SPACE,                                       REPEAT, MO(3)
+                                                    MO(2),          KC_SPACE,                                       KC_TRANSPARENT, MO(3)
   ),
   [1] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
@@ -132,8 +131,6 @@ bool rgb_matrix_indicators_user(void) {
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (!process_repeat_key(keycode, record, REPEAT)) { return false; }
-
   switch (keycode) {
 
     case RGB_SLD:
@@ -162,4 +159,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
+
 
